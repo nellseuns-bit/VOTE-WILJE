@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vote Wiljé du Toit</title>
+
+<style>
+body{
+    margin:0;
+    background:#0b1f4d;
+    font-family:Arial, Helvetica, sans-serif;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+
+.scene{
+    perspective:1000px;
+}
+
+.card{
+    width:320px;
+    height:480px;
+    position:relative;
+    transform-style:preserve-3d;
+    transition:1s;
+    cursor:pointer;
+}
+
+.card.flip{
+    transform:rotateY(180deg);
+}
+
+.face{
+    position:absolute;
+    width:100%;
+    height:100%;
+    border-radius:25px;
+    backface-visibility:hidden;
+    overflow:hidden;
+    box-shadow:0 15px 35px rgba(0,0,0,.4);
+}
+
+.front{
+    background:linear-gradient(180deg,#07204f,#123b83);
+    color:white;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:30px;
+}
+
+.front h1{
+    font-size:42px;
+    margin:10px;
+}
+
+.front h2{
+    color:#FFD23F;
+    margin:0;
+}
+
+.tap{
+    margin-top:40px;
+    background:#c62828;
+    padding:12px 25px;
+    border-radius:30px;
+}
+
+.back{
+    background:white;
+    transform:rotateY(180deg);
+    color:#123b83;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:30px;
+}
+
+.fact{
+    font-size:32px;
+    color:#c62828;
+    font-weight:bold;
+}
+
+.small{
+    margin-top:30px;
+    color:#666;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="scene">
+<div class="card" id="card">
+
+<div class="face front">
+
+<h2>🦅 BERGSIG</h2>
+
+<h1>VOTE</h1>
+
+<h1>WILJÉ</h1>
+
+<h2>DU TOIT</h2>
+
+<p>Lead • Serve • Inspire</p>
+
+<div class="tap">Tap to Flip ➜</div>
+
+</div>
+
+<div class="face back">
+
+<h2>👣 FUN FACT</h2>
+
+<div class="fact">
+Wiljé took his first steps at only 13 months!
+</div>
+
+<p>
+Every great journey starts with one step.
+</p>
+
+<div class="small">
+Tap again to flip back.
+</div>
+
+</div>
+
+</div>
+</div>
+
+<script>
+document.getElementById("card").onclick=function(){
+    this.classList.toggle("flip");
+    
+    // Haptic feedback on flip
+    if (navigator.vibrate) {
+        navigator.vibrate([35, 50, 35]);
+    }
+}
+</script>
+
+</body>
+</html>
